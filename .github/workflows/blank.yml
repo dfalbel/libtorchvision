@@ -1,0 +1,45 @@
+name: Build LibTorchVision
+
+on:
+  
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  
+  build:
+    
+    runs-on: windows-latest
+
+    steps:
+      
+      - run: |
+          git clone https://github.com/pytorch/vision
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      
+      - name: Download LibTorch
+        run: |
+          from urllib.request import urlretrieve
+          url = 'https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-1.9.0%2Bcpu.zip'
+          dst = 'libtorch.zip'
+          urlretrieve(url, dst)
+        shell: python
+        
+      - name: Extract
+        run: |
+          import zipfile
+          with zipfile.ZipFile("libtorch.zip","r") as zip_ref:
+            zip_ref.extractall(".")
+        shell: python
+          
+      - run: | 
+          ls
+          cd vision
+          mkdir build
+          
