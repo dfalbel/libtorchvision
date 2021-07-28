@@ -37,9 +37,21 @@ jobs:
           with zipfile.ZipFile("libtorch.zip","r") as zip_ref:
             zip_ref.extractall(".")
         shell: python
+        
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-activate-base: true
+          activate-environment: ""
+        
+      - name: Install conda dependencies
+        run: |
+          conda install libpng jpeg
           
       - run: | 
           ls
           cd vision
           mkdir build
+          cmake .. -DCMAKE_PREFIX_PATH=../libtorch
+          
+
           
