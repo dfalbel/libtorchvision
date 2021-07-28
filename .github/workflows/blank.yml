@@ -58,7 +58,7 @@ jobs:
           cmake .. -D"CMAKE_PREFIX_PATH=../libtorch"
           msbuild "-p:Configuration=Release" "-p:BuildInParallel=true" "-p:MultiProcessorCompilation=true" "-p:CL_MPCount=4" torchvision.vcxproj -maxcpucount:4
           msbuild "-p:Configuration=Release" "-p:BuildInParallel=true" "-p:MultiProcessorCompilation=true" "-p:CL_MPCount=4" INSTALL.vcxproj -maxcpucount:4
-          ls build
+          ls
           ls Release
           
           
