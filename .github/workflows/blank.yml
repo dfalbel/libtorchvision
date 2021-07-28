@@ -66,5 +66,5 @@ jobs:
         with:
           files: vision\build\Release\torchvision.dll
           name: v0.10.0 
-          tag: v0.10.0
+          tag_name: v0.10.0
           
