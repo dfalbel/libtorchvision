@@ -52,7 +52,12 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
         with:
-          vs-version: '[16.4,16.5)'
+          vs-version: '[16,19)'
+          
+      - name: Try the official build script
+        run: |
+          bash vision/packaging/build_cmake.sh
+        shell: bash
           
       - run: | 
           ls
