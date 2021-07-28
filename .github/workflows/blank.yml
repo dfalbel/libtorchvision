@@ -61,6 +61,9 @@ jobs:
           ls
           ls Release
           
-          
-
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: vision\build\Release\torchvision.dll
+          name: v0.10.0 
           
